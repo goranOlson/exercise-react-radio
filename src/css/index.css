@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    padding-inline: 1rem;
+}
+
+
+#root > main {
+    padding-block: 1rem;
+}

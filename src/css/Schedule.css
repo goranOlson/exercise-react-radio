@@ -1,0 +1,38 @@
+.part-schedule {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    padding-block: 0.5rem;
+
+}
+
+.part-schedule .program-container {
+    display: flex;
+    flex-direction: column;
+    
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    
+}
+
+.part-schedule .textbox {
+    padding: 0.2rem 0.5rem
+}
+
+.part-schedule .prog {
+    display: grid;
+    grid-template-columns: max-content auto;
+    grid-template-rows: max-content;
+}
+
+.part-schedule img {
+    width: 50px;
+    height: 50px;
+    background: #eee;
+    color: transparent;
+}
+
+.part-schedule .title {
+    font-weight: bold;
+}
