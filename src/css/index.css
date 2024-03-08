@@ -13,3 +13,8 @@ body {
 #root > main {
     padding-block: 1rem;
 }
+
+a {
+    /* color: white; */
+    text-decoration: none;
+}

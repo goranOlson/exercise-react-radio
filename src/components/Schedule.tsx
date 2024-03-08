@@ -22,66 +22,50 @@ export function Schedule(): JSX.Element {
         setData(data.schedule);  // Skip copyright
     } 
     
+    useEffect(() => {
+        fetchData();
+    }, []);
 
-   useEffect(() => {
-    fetchData();
-   }, []);
-
-   // {links.map(link => (<Link className={link.className} activeClassName={link.activeClassName} to={link.to}>{link.name}</Link> ))}
-
-   // starttimeutc: /Date(1709766000000)/
     function getTimeString(time: string) {
         let timeString = "";
 
         if (time) {
-            const value = time.substring(6, time.length - 2);
-
-            // timeString = value;
-            const d = new Date(value);
-            timeString = d.getHours() + ":" + d.getMinutes();
-            // console.log(timeString);
+            const newTime = time.substring(6, 20);  // org: /Date(1709766000000)/
+            const d = new Date(parseInt(newTime));  // 1709835354133
+            timeString = d.toLocaleTimeString().substring(0, 5);  //  .substr(0, 5)
         }
 
         return timeString;
    }
-   function getTime(time: string) {
-        return "01:00";
-    }
 
-    return (
+    return (<>
+        <section className="part-schedule" key={1}>
+            { data.map( (prog, index) => {
+                const image: string = prog.imageurl ? prog.imageurl : ""
+                const title: string = prog.title ? prog.title : "-";
+                const description: string = prog.description ? prog.description : "";
 
-        
-        <section className="part-schedule">
-            Scheduel... {data.length}
-            return (
-            { data.map( (prog) => {
-                const image = prog.imageurl ? prog.imageurl : ""
-                const title = prog.title ? prog.title : "-";
-                const description = prog.description ? prog.description : "";
-
-                
-                // starttimeutc: /Date(1709766000000)/
-                // const tFrom = prog.starttimeutc ? new Date() : ""
-                console.log('time: ' + getTimeString(prog.starttimeutc));
-                console.log('time2: ' + getTime());
+                const timeFrom: string = getTimeString(prog.starttimeutc);  // '00:00'; // prog.starttimeutc ? getTimeString(prog.starttimeutc + '000') : "";
+                const timeUntil: string = getTimeString(prog.endtimeutc);   // prog.endtimeutc ? getTimeString(prog.endtimeutc + '000') : "";
 
                 return (
-                    <div className="program-container" key={prog.id}>
+                    <>
+                    <article className="program-container" key={index}>
                         <div className="prog">
-                            <img src={image} alt="Program icon" />
+                            {/* <img src={image} alt="Program icon" /> */}
                             <div>
-                                <div className="textbox title">{title}</div>
-                                <div>00:00 - 00:30</div>
+                                <div className="textbox title">{title} {index}</div>
+                                <div className="textbox">{timeFrom} - {timeUntil}</div>
                             </div>
                         </div>
                         <div className="textbox description">{description}</div>
 
-                    </div>
+                    </article>
+                    </>
                 )
-            } ) }
-            )
+            }
+             ) }
+            
         </section>
-        
-        
-    );
+    </>);
 }

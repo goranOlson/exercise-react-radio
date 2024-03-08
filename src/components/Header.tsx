@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { IRoute } from "../interfaces"
 
+import '../css/Header.css'
+
 export interface IHeaderProps {
     links: IRoute[];
 }
