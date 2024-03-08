@@ -8,15 +8,14 @@ import '../css/ChannelPage.css'
 export function ChannelPage():JSX.Element {
     // const [view, setView] = useState('');  // schedule | programs
 
-    const [channelData, setChannelData] = useState([]);
-    const [subPage, setSubPabe] = useState('scheduel');
+    const [channelData, setChannelData] = useState<object[]>([]);
+    const [subPage, setSubPabe] = useState<string>('scheduel');
 
     const { channel } = useParams();
-    console.log('channel: ' + channel);
+    // console.log('channel: ' + channel);
 
     useEffect(() => {  // id
         fetchChannelData();
-
     }, []);
 
     const fetchChannelData = async () => {
@@ -24,7 +23,7 @@ export function ChannelPage():JSX.Element {
 
         const response = await fetch(urlChannel);
         const data = await response.json();
-         console.log('data: ', data);
+        // console.log('data: ', data);
 
         setChannelData(data.channel);  // Skip copyright and 'channel'
     }

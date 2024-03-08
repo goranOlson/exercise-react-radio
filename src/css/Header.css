@@ -1,0 +1,34 @@
+.page-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: max-content;
+    background-color: navy;
+    color: white;
+}
+
+.page-header h1 {
+    padding-block: 0.5rem;
+    font-size: 24px;
+}
+
+.page-header .page-navbar {
+    display: flex;
+    column-gap: 0.8rem;
+    margin-top: 4px;
+    /* background-color: yellow; */
+}
+
+.page-header .page-navbar a {
+    padding-block: 0.2rem 0;
+    padding-inline: 0.5rem;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: white;
+}
+
+.page-header .page-navbar a.active {
+    color: navy;
+    background-color: white;
+}
